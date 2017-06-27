@@ -1,0 +1,22 @@
+{
+  "name": "piper-chat",
+  "version": "1.0.0",
+  "description": "\"# piper-chat\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliranamar/piper-chat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eliranamar/piper-chat/issues"
+  },
+  "homepage": "https://github.com/eliranamar/piper-chat#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
