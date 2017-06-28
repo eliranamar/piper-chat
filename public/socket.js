@@ -5,12 +5,23 @@ var socket = io();
 
 var room;
 
-// socket.on('connect', function () {
-//   // Connected, let's sign-up for to receive messages for this room
-//   socket.emit('join room', room);
-// });
+socket.on('connect', function () {
+  // Connected, let's sign-up for to receive messages for this room
+  socket.emit('join room', 'room1');
+});
+
+var joinRoom = function (id) {
+  $.ajax('/chat/' + id, {
+    type: "GET",
+    success: function (data) {
+      console.log(data);
+
+    }
+  });
+}
 
 // when client sends a message to server
+
 $('#messageForm').submit(function () {
   socket.emit('chat message', $('#m').val(), function (data) {
 
@@ -28,7 +39,7 @@ socket.on('chat message', function (data) {
 });
 
 // grab user login elements
-var $usersLogin =$('#users');
+var $usersLogin = $('#users');
 var $userForm = $('#userForm');
 var $nicknameInput = $('#nicknameInput');
 //on user login 
@@ -53,7 +64,7 @@ $userForm.submit(function (e) {
   $nicknameInput.val('');
 });
 
-socket.on('update users', function(data){
+socket.on('update users', function (data) {
 
 });
 socket.on('usernames', function (data) {
@@ -69,9 +80,10 @@ socket.on('usernames', function (data) {
 $("#createChatButton").on('click', function () {
   var id = makeid();
   console.log(id);
-  createChat({
-    id: id
-  });
+  joinRoom(id);
+  // createChat({
+  //   id: id
+  // });
 })
 var createChat = function (newChat) {
   $.ajax('/chat/' + newChat.id, {

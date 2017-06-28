@@ -20,8 +20,10 @@ server.listen(port, '0.0.0.0', function () {
 
 
 //get req for chat rooms route
-app.get('/chat/:id', function () {
-room = req.params.id;
+app.get('/chat/:id', function (req, res) {
+  room = req.params.id;
+  console.log(room);
+  res.sendFile(__dirname + '/public/chat.html')
 });
 // when a user connects
 io.on('connection', function (socket) {
@@ -30,6 +32,12 @@ io.on('connection', function (socket) {
     socket.to(socket.room).emit('usernames', Object.keys(users));
     // socket.emit('usernames', Object.keys(users));
   }
+  // app.get('/chat/:id', function (req, res) {
+  //   room = req.params.id;
+  //   console.log(room);
+  //   res.send()
+  // });
+
   // when user login to chat room
   socket.on('new user', function (data, callback) {
     console.log(data);
