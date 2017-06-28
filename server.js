@@ -29,22 +29,18 @@ app.get('/chat/:id', function (req, res) {
 // when a user connects
 io.on('connection', function (socket) {
   function updateUserList() {
-    console.log('updating on chat enter');
+    console.log('updating on chat enter the users on room ' + socket.room);
     socket.to(socket.room).emit('usernames', Object.keys(users));
     // socket.emit('usernames', Object.keys(users));
   }
-  // app.get('/chat/:id', function (req, res) {
-  //   room = req.params.id;
-  //   console.log(room);
-  //   res.send()
-  // });
 
-  // when user login to chat room
-  socket.on('create chat room' , function(data){
-    console.log(data);
 
+  // when user create and login to chat room
+  socket.on('create chat room' , function(roomId){
+    console.log(roomId);
   })
 
+  // check if new user exists
   socket.on('new user', function (data, callback) {
     console.log(data);
     if (data in users) {
@@ -57,7 +53,7 @@ io.on('connection', function (socket) {
       users[socket.username] = socket;
       // console.log(users);
       // updateUsers();
-      updateUserList();
+      // updateUserList();
     }
   })
 
@@ -70,8 +66,8 @@ io.on('connection', function (socket) {
 
   //when client send a message
   socket.on('chat message', function (msg) {
-    console.log(socket.username);
-    //send to every one
+    console.log(socket.username+': '+msg);
+    //send to every one in room
     io.in(socket.room).emit('chat message', {
       text: msg,
       user: socket.username

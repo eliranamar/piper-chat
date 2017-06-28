@@ -3,29 +3,18 @@ console.log('socket.js connected');
 
 var socket = io();
 var room = window.location.href.split('?')[1];
+console.log('room: ' + room);
+
 
 // socket.on('connect', function () {
 //   // Connected, let's sign-up for to receive messages for this room
 //   socket.emit('join room', id);
 // });
 
-// eliran ajax request for joining random room
-// var joinRoom = function (id) {
-//   $.ajax('/chat/' + id, {
-//     type: "GET",
-//     success: function (data) {
-//       console.log(data);
-
-//     }
-//   });
-// }
-
 // when client sends a message to server
-
 $('#messageForm').submit(function () {
-  socket.emit('chat message', $('#m').val(), function (data) {
-
-  });
+  //emit to server
+  socket.emit('chat message', $('#m').val());
   $('#m').val('');
   console.log('msg submitted');
   return false;
@@ -45,7 +34,11 @@ var $nicknameInput = $('#nicknameInput');
 //on user login 
 $userForm.submit(function (e) {
   e.preventDefault();
-  socket.emit('join room', room);
+  if (!room) {
+    $('body').html('');
+    $('body').append('<img width="100%" id="magicWord" src="https://media.giphy.com/media/uOAXDA7ZeJJzW/giphy.gif"></img>');
+    return false;
+  }
   console.log('submit nickname');
   console.log($nicknameInput.val());
   if (!$nicknameInput.val()) {
@@ -54,11 +47,14 @@ $userForm.submit(function (e) {
   }
   socket.emit('new user', $nicknameInput.val(), function (data) {
     if (data) {
+
+      socket.emit('join room', room);
       $(".i-am-centered").addClass("hide");
       $(".container").removeClass("hide");
     } else {
-      alert('user name taken, try something else');
+      alert('nick name taken, try something else');
     }
+
   });
   $nicknameInput.val('');
 });
@@ -68,7 +64,7 @@ socket.on('update users', function (data) {
 });
 
 socket.on('usernames', function (data) {
-  console.log('test');
+  // console.log('test');
   console.log(data);
   var html = '';
   for (i = 0; i < data.length; i++) {
@@ -78,28 +74,28 @@ socket.on('usernames', function (data) {
 });
 
 // Rami trying work on ajax
-$("#createChatButton").on('click', function () {
-  var id = makeid();
-  console.log(id);
-  joinRoom(id);
-  // createChat({
-  //   id: id
-  // });
-})
+// $("#createChatButton").on('click', function () {
+//   var id = makeid();
+//   console.log(id);
+//   joinRoom(id);
+// createChat({
+//   id: id
+// });
+// })
 
-var createChat = function (newChat) {
-  $.ajax('/chat/' + newChat.id, {
-    type: "GET",
-    contentType: 'application/json; charset=utf-8',
-    data: JSON.stringify(newChat),
-    success: function (data) {
-      console.log(data);
-      window.location = "http://localhost:8000/" + 'chat/' + newChat.id;
-      // console.log(posts);
+// var createChat = function (newChat) {
+//   $.ajax('/chat/' + newChat.id, {
+//     type: "GET",
+//     contentType: 'application/json; charset=utf-8',
+//     data: JSON.stringify(newChat),
+//     success: function (data) {
+//       console.log(data);
+//       window.location = "http://localhost:8000/" + 'chat/' + newChat.id;
+//       // console.log(posts);
 
-    },
-  });
-}
+//     },
+//   });
+// }
 
 function makeid() {
   var text = "";
@@ -110,3 +106,5 @@ function makeid() {
 
   return text + Math.floor(Math.random() * 19568);
 }
+
+$('#nicknameInput').focus();
