@@ -15,7 +15,7 @@ function makeid() {
   return text + Math.floor(Math.random() * 99999);
 }
 
-$('#userForm').submit(function (e) {
+$('div.msg').click(function (e) {
   e.preventDefault();
   var roomId = makeid();
   console.log('creating chat room');

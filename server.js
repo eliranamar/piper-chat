@@ -15,28 +15,27 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }))
+
 server.listen(port, '0.0.0.0', function () {
   console.log('listening on port 8000');
 });
-
 
 //get req for chat rooms route
 app.get('/chat/:id', function (req, res) {
   room = req.params.id;
   console.log(room);
-  res.redirect('http://localhost:8000/chat.html?'+room);
+  res.redirect('http://localhost:8000/chat.html?' + room);
 });
 // when a user connects
 io.on('connection', function (socket) {
   function updateUserList() {
-    console.log('updating on chat enter the users on room ' + socket.room);
+    console.log('updating on chat the users on room ' + socket.room);
     socket.to(socket.room).emit('usernames', Object.keys(users));
     // socket.emit('usernames', Object.keys(users));
   }
 
-
   // when user create and login to chat room
-  socket.on('create chat room' , function(roomId){
+  socket.on('create chat room', function (roomId) {
     console.log(roomId);
   })
 
@@ -52,21 +51,24 @@ io.on('connection', function (socket) {
       // users.push(socket.username);
       users[socket.username] = socket;
       // console.log(users);
-      // updateUsers();
       // updateUserList();
     }
   })
 
+  //when client request to join a room
   socket.on('join room', function (room) {
     socket.room = room;
     socket.join(socket.room);
+    // send only to new user they connected to room
+    socket.emit('update chat', 'FROM SERVER', 'you have connected to room ' + socket.room);
+    // send to chat room a new user connected
+    socket.broadcast.to(socket.room).emit('update chat', 'FROM SERVER', socket.username + ' has connected to this room');
     updateUserList();
-
   })
 
   //when client send a message
   socket.on('chat message', function (msg) {
-    console.log(socket.username+': '+msg);
+    console.log(socket.username + ': ' + msg + '. sent on room ' + socket.room);
     //send to every one in room
     io.in(socket.room).emit('chat message', {
       text: msg,
@@ -79,21 +81,10 @@ io.on('connection', function (socket) {
     if (!socket.username) return;
     // users.splice(users.indexOf(socket), 1);
     delete users[socket.username];
+    socket.broadcast.to(socket.room).emit('update chat', 'FROM SERVER', socket.username + ' has disconnected from room ' + socket.room);
     socket.leave(socket.room);
     // updateChatRoom(socket, 'diconnected')
     // updateUsers();
     updateUserList();
   });
-
-
 })
-
-
-function updateClient(socket, username, newRoom) {
-
-}
-
-// function updateChatRoom(socket, message) {
-//   socket.broadcast.to(socket.room).emit('update chat', 'SERVER', socket.username + ' have ' + message);
-
-// }
