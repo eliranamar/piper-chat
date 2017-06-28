@@ -10,6 +10,7 @@ socket.on('connect', function () {
   socket.emit('join room', 'room1');
 });
 
+// eliran ajax request for joining random room
 var joinRoom = function (id) {
   $.ajax('/chat/' + id, {
     type: "GET",
@@ -65,8 +66,9 @@ $userForm.submit(function (e) {
 });
 
 socket.on('update users', function (data) {
-
+  console.log('updating users...');
 });
+
 socket.on('usernames', function (data) {
   console.log('test');
   console.log(data);
@@ -76,6 +78,7 @@ socket.on('usernames', function (data) {
   }
   $usersLogin.html(html);
 });
+
 // Rami trying work on ajax
 $("#createChatButton").on('click', function () {
   var id = makeid();
@@ -85,6 +88,7 @@ $("#createChatButton").on('click', function () {
   //   id: id
   // });
 })
+
 var createChat = function (newChat) {
   $.ajax('/chat/' + newChat.id, {
     type: "GET",

@@ -4,8 +4,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+app.io = io; // attaching io instance to the app
 var users = {};
-var rooms = ['room1', 'room2'];
+var rooms = [];
 var port = process.env.PORT || 8000;
 
 app.use(express.static('public'));
@@ -23,7 +24,7 @@ server.listen(port, '0.0.0.0', function () {
 app.get('/chat/:id', function (req, res) {
   room = req.params.id;
   console.log(room);
-  res.sendFile(__dirname + '/public/chat.html')
+  res.sendFile(__dirname + '/public/chat.html');
 });
 // when a user connects
 io.on('connection', function (socket) {
@@ -39,6 +40,11 @@ io.on('connection', function (socket) {
   // });
 
   // when user login to chat room
+  socket.on('create chat room' , function(data){
+    console.log(data);
+
+  })
+
   socket.on('new user', function (data, callback) {
     console.log(data);
     if (data in users) {
