@@ -24,7 +24,7 @@ server.listen(port, '0.0.0.0', function () {
 app.get('/chat/:id', function (req, res) {
   room = req.params.id;
   console.log(room);
-  res.sendFile(__dirname + '/public/chat.html');
+  res.redirect('http://localhost:8000/chat.html?'+room);
 });
 // when a user connects
 io.on('connection', function (socket) {

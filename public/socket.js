@@ -2,24 +2,23 @@ console.log('socket.js connected');
 
 
 var socket = io();
+var room = window.location.href.split('?')[1];
 
-var room;
-
-socket.on('connect', function () {
-  // Connected, let's sign-up for to receive messages for this room
-  socket.emit('join room', 'room1');
-});
+// socket.on('connect', function () {
+//   // Connected, let's sign-up for to receive messages for this room
+//   socket.emit('join room', id);
+// });
 
 // eliran ajax request for joining random room
-var joinRoom = function (id) {
-  $.ajax('/chat/' + id, {
-    type: "GET",
-    success: function (data) {
-      console.log(data);
+// var joinRoom = function (id) {
+//   $.ajax('/chat/' + id, {
+//     type: "GET",
+//     success: function (data) {
+//       console.log(data);
 
-    }
-  });
-}
+//     }
+//   });
+// }
 
 // when client sends a message to server
 
@@ -46,7 +45,6 @@ var $nicknameInput = $('#nicknameInput');
 //on user login 
 $userForm.submit(function (e) {
   e.preventDefault();
-  room = $('input[name=roomNumber]:checked').val();
   socket.emit('join room', room);
   console.log('submit nickname');
   console.log($nicknameInput.val());
