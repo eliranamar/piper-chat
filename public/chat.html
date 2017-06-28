@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>socket.io chat</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <!--login nick name-->
+  <div class="i-am-centered">
+    <div class="row" id="user-login-form">
+      <div class="col-md-8">
+        <form action="" id="userForm">
+          <div class="form-group">
+            <input type="text" class="" id="nicknameInput" placeholder="Enter Nickname" autocomplete="off">
+            <br>
+            <input type="submit" class="btn btn-primary" value="Chat">
+          </div>
+        </form>
+      </div>
+    </div>
+    <!--<input type="radio" name="roomNumber" value="room1"> room1 <br>
+    <input type="radio" name="roomNumber" value="room2"> room2 <br>-->
+  </div>
+
+  <div class="container hide">
+    <div class="page-header">
+      <h1>Piper Chat</h1>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-3">
+          <h3>online users:</h3>
+          <ul class="list-group" id="users">
+
+          </ul>
+        </div>
+        <div class="col-md-9 col-sm-9">
+
+          <div class="chat" id="chat">
+            <ul id="messages">
+
+            </ul>
+          </div>
+
+          <div class="formText">
+            <form action="" id="messageForm">
+              <input id="m" autocomplete="off" /><button id="sendMB">Pusk</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/aes.min.js"></script>-->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="socket.js"></script>
+</body>
+
+</html>

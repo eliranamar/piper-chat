@@ -2,55 +2,61 @@
 <html lang="en">
 
 <head>
-  <title>socket.io chat</title>
+  <title></title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+ <link href="https://www.dropbox.com/s/udfqeb2pkbcv3be/styles.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/front.css" rel="stylesheet">
 </head>
 
 <body>
-  <div class="container">
-    <div class="page-header">
-      <h1>Socket.io chat</h1>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 col-sm-3">
-        <h3>online users:</h3>
-        <ul class="list-group" id="users">
-
-        </ul>
+  <div class="logoDiv"><img src="images/piperLogo.png"></div>
+  <div class="infoDiv "><a style="text-decoration: none;" href=''>
+    <div class="svg-wrapper">
+      <svg height="40" width="150" style="text-decoration: none;" xmlns="http://www.w3.org/2000/svg">
+        <rect class="shape" height="40" width="150" />
+      </svg>
+      <div class="text">INFO
       </div>
-      <div class="col-md-9 col-sm-9">
-        <div class="chat" id="chat">
-
-        </div>
-        <form action="" id="messageForm">
+    </div></a>
+  </div>
+  <div id='tooltip' class="" style="display:none;">
+    <p>
+      <u>Welcome to Piper Chat</u><br>
+Piper Chat is an anonymous chat.
+Click on the Create Chat button to open a chat room.
+You will get a unique url, send the url to your friends and start to chatting (anonymously :).
+       </p>
+  </div>
+  <div class="i-am-centered">
+    <div class="row" id="user-login-form">
+      <div class="col-md-8">
+        <form action="" id="userForm">
           <div class="form-group">
-            <label for="">Enter message: </label>
-            <textarea rows="" cols="" class="form-control" id="message"></textarea>
-            <br>
-          </div>
+
+
+           <input type="submit" class="btn btn-primary" id="createChat" value="Create Chat">
+
+         </div>
         </form>
+        <!--START BUTTON-->
+        <div class="button">
+          <div class="compass"></div>
+          <div class="msg">CREATE CHAT</div>
+        </div>
+        <!--BUTTON END-->
       </div>
     </div>
   </div>
-  <div class="container">
-
-    <ul id="messages">
-
-    </ul>
-  </div>
-  <!--<form action="">
-    <input id="m" autocomplete="off" /><button>Send</button>
-  </form>-->
+  <canvas id="c"></canvas>
   <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="socket.js"></script>
+  <script src="homepage.js"></script>
+  <script src="front.js"></script>
 </body>
 
 </html>
