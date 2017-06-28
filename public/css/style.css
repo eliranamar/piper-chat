@@ -47,35 +47,7 @@ button#sendMB {
     margin-left: 40%;
     margin-top: 20%;
 }
-input#nicknameInput {
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #00A9DF !important;
-    color: #fff !important;
-    text-align: center;
-    font-size: 30px;
-    width: 100%;
-}
-    input#nicknameInput::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #fff;
-}
-input#nicknameInput::-moz-placeholder { /* Firefox 19+ */
-  color: #fff;
-}
-input#nicknameInput:-ms-input-placeholder { /* IE 10+ */
-  color: #fff;
-}
-input#nicknameInput:-moz-placeholder { /* Firefox 18- */
-  color: #fff;
-}
 
-input.btn.btn-primary {
-    margin-top: 3px;
-    background-color: rgba(0, 0, 255, .2);
-    width: 100%;
-    font-size: 22px;
-    color: #fff;
-}
 /*logo*/
 .logoDiv {
     width: 225px;
