@@ -1,6 +1,5 @@
 console.log('socket.js connected');
 
-
 var socket = io();
 var room = window.location.href.split('?')[1];
 console.log('room: ' + room);
@@ -15,10 +14,10 @@ function copyToClipboard(element) {
   var $temp = $("<input>");
   $("body").append($temp);
   $temp.val($(element).text()).select();
+  console.log($temp.val());
   document.execCommand("copy");
   $temp.remove();
 }
-
 
 // when client sends a message to server
 $('#messageForm').submit(function () {
@@ -36,8 +35,9 @@ socket.on('update chat', function (username, data) {
 
 // when server sends a message to client
 socket.on('chat message', function (data) {
-  // console.log(data.user);
-  $('#messages').append($('<li>').text('- ' + data.user + ': ' + data.text));
+  var text = "<li><span>" + data.user + '</span>' + '<p>' + data.text + "</p></li>";
+  // console.log(text);
+  $('#messages').append(text);
   window.scrollTo(0, document.body.scrollHeigh);
 });
 
@@ -96,4 +96,8 @@ function makeid() {
   return text + Math.floor(Math.random() * 19568);
 }
 
+$('#chat-link').append('<span id="link-text">http://localhost:8000/chat.html?' + room + '</span>');
+$('#copy-link').on('click', function () {
+  copyToClipboard('#link-text')
+});
 $('#nicknameInput').focus();

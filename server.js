@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-app.io = io; // attaching io instance to the app
+// app.io = io; // attaching io instance to the app
 var users = {};
 var rooms = [];
 var port = process.env.PORT || 8000;
@@ -29,7 +29,7 @@ app.get('/chat/:id', function (req, res) {
 // when a user connects
 io.on('connection', function (socket) {
   function updateUserList() {
-    console.log('updating on chat the users on room ' + socket.room);
+    // console.log('updating on chat the users on room ' + socket.room);
     socket.to(socket.room).emit('usernames', Object.keys(users));
     // socket.emit('usernames', Object.keys(users));
   }
