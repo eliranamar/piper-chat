@@ -5,7 +5,6 @@ var socket = io();
 var room = window.location.href.split('?')[1];
 console.log('room: ' + room);
 
-
 // socket.on('connect', function () {
 //   // Connected, let's sign-up for to receive messages for this room
 //   socket.emit('join room', id);
@@ -16,13 +15,18 @@ $('#messageForm').submit(function () {
   //emit to server
   socket.emit('chat message', $('#m').val());
   $('#m').val('');
-  console.log('msg submitted');
+  // console.log('msg submitted');
   return false;
+});
+
+// when the server send a message:
+socket.on('update chat', function (username, data) {
+  $('#messages').append('<b>' + username + ':</b> ' + data + '<br>');
 });
 
 // when server sends a message to client
 socket.on('chat message', function (data) {
-  console.log(data.user);
+  // console.log(data.user);
   $('#messages').append($('<li>').text('- ' + data.user + ': ' + data.text));
   window.scrollTo(0, document.body.scrollHeigh);
 });
@@ -47,7 +51,6 @@ $userForm.submit(function (e) {
   }
   socket.emit('new user', $nicknameInput.val(), function (data) {
     if (data) {
-
       socket.emit('join room', room);
       $(".i-am-centered").addClass("hide");
       $(".container").removeClass("hide");
@@ -72,30 +75,6 @@ socket.on('usernames', function (data) {
   }
   $usersLogin.html(html);
 });
-
-// Rami trying work on ajax
-// $("#createChatButton").on('click', function () {
-//   var id = makeid();
-//   console.log(id);
-//   joinRoom(id);
-// createChat({
-//   id: id
-// });
-// })
-
-// var createChat = function (newChat) {
-//   $.ajax('/chat/' + newChat.id, {
-//     type: "GET",
-//     contentType: 'application/json; charset=utf-8',
-//     data: JSON.stringify(newChat),
-//     success: function (data) {
-//       console.log(data);
-//       window.location = "http://localhost:8000/" + 'chat/' + newChat.id;
-//       // console.log(posts);
-
-//     },
-//   });
-// }
 
 function makeid() {
   var text = "";
