@@ -33,7 +33,7 @@ socket.on('chat message', function (data) {
 
 // grab user login elements
 var $usersLogin = $('#users');
-var $userForm = $('#userForm');
+var $userForm = $('#form1');
 var $nicknameInput = $('#nicknameInput');
 //on user login 
 $userForm.submit(function (e) {

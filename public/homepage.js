@@ -23,6 +23,6 @@ $('div.msg').click(function (e) {
 
   });
   $nicknameInput.val('');
-  window.location = "http://localhost:8000/chat/"+roomId;
+  window.location = "10.118.108.47:8000/chat/"+roomId;
 
 });
