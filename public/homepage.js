@@ -5,7 +5,6 @@ var $nicknameInput = $('#nicknameInput');
 var $userForm = $('#userForm');
 
 
-$nicknameInput.focus();
 //making random room ids
 function makeid() {
   var text = "";
@@ -23,6 +22,6 @@ $('div.msg').click(function (e) {
 
   });
   $nicknameInput.val('');
-  window.location = "10.118.108.47:8000/chat/"+roomId;
+  window.location = "http://10.118.108.47:8000/chat/"+roomId;
 
 });

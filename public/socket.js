@@ -10,6 +10,16 @@ console.log('room: ' + room);
 //   socket.emit('join room', id);
 // });
 
+// copy chat room link to clipboard
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+
+
 // when client sends a message to server
 $('#messageForm').submit(function () {
   //emit to server
