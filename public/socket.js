@@ -33,6 +33,7 @@ $('#messageForm').submit(function () {
 // when the server send a message:
 socket.on('update chat', function (username, data) {
   $('#messages').append('<b>' + username + ':</b> ' + data + '<br>');
+  socket.emit('get user list');
 });
 
 // when server sends a message to client
@@ -52,7 +53,8 @@ $userForm.submit(function (e) {
   e.preventDefault();
   if (!room) {
     $('body').html('');
-    $('body').append('<img width="100%" id="magicWord" src="https://media.giphy.com/media/uOAXDA7ZeJJzW/giphy.gif"></img>');
+    $('body').append('<img width="100%" id="magicWord" src="https://media.giphy.com/media/uOAXDA7ZeJJzW/giphy.gif"></img>' +
+      '<audio src="sound/magic-word.mp3" autoplay loop></audio>');
     return false;
   }
   console.log('submit nickname');
@@ -61,8 +63,12 @@ $userForm.submit(function (e) {
     alert('please enter nickname');
     return false;
   }
-  socket.emit('new user', $nicknameInput.val(), function (data) {
+  socket.emit('new user', {
+    name: $nicknameInput.val(),
+    room: room
+  }, function (data) {
     if (data) {
+      console.log(room);
       socket.emit('join room', room);
       $(".i-am-centered").addClass("hide");
       $(".container").removeClass("hide");
@@ -73,7 +79,7 @@ $userForm.submit(function (e) {
   });
   $nicknameInput.val('');
   $('.infoDiv ').addClass('hide'); // Adding hide class to info to make it desapear
-  $(".logoDiv").after("<div class='soundImage'><img src='/images/radar.gif'></div>");
+  $(".logoDiv").after("<div class='soundImage'><img class='img-responsive' src='/images/radar.gif'></div>");
 });
 
 socket.on('update users', function (data) {
@@ -85,7 +91,7 @@ socket.on('usernames', function (data) {
   console.log(data);
   var html = '';
   for (i = 0; i < data.length; i++) {
-    html += data[i] + '<br/>';
+    html += "&nbsp&nbsp<img src='images/sound.gif'> " + data[i] + "<br/>";
   }
   $usersLogin.html(html);
 });

@@ -14,6 +14,7 @@
 html,
 body {
 	height: 100%;
+	overflow: auto;
 }
 
 body {
@@ -324,15 +325,15 @@ p.textChat {
 
 .chatMovement {
 	position: relative;
-	right: 227px;
-	top: -203px;
+	right: 143px;
+	top: -227px;
 }
 
 .titleHolder {
 	width: 800px;
-	margin-left: 323px;
+	margin-left: 270px;
 	position: relative;
-	top: -79px;
+	top: -50px;
 }
 
 
@@ -369,4 +370,38 @@ form#messageForm {
 	width: 97%;
 	margin: 2px auto 0;
 	margin-right: 24px;
+}
+
+
+/*LINK button*/
+
+button#copy-link {
+	background: transparent;
+	border: 1px solid #9DD4FB;
+}
+
+div#chat-link {
+	position: relative;
+	top: -39px;
+	left: -79px;
+}
+
+
+/*User*/
+
+.col-md-3.col-sm-3 {
+	border-top: 4px solid #9DD4FB;
+	position: relative;
+	right: -16px;
+}
+
+ul#users {
+	color: green;
+	font-size: 16px;
+	text-align: left;
+}
+
+h3 {
+	color: #007094;
+	text-align: left;
 }

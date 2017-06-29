@@ -2,109 +2,106 @@
 <html lang="en">
 
 <head>
-  <title>socket.io chat</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>socket.io chat</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/front.css" rel="stylesheet">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+   crossorigin="anonymous">
+ <link href="css/style.css" rel="stylesheet">
+ <link href="css/front.css" rel="stylesheet">
 
 </head>
 
 <body style="background:#000">
-  <div class="logoDiv"><img src="images/piperLogo.png"></div>
-  <div class="infoDiv ">
-    <a style="text-decoration: none;" href=''>
-      <div class="svg-wrapper">
-        <svg height="40" width="150" style="text-decoration: none;" xmlns="http://www.w3.org/2000/svg">
-          <rect class="shape" height="40" width="150" />
-        </svg>
-        <div class="text">INFO
-        </div>
-      </div>
-    </a>
-  </div>
-  <div id='tooltip' class="" style="display:none;">
-    <p>
-      <u>Welcome to Piper Chat</u><br> Piper Chat is an anonymous chat. Choose a Nick Name and Click on the Chat button to open
-      a chat room.
+ <div class="logoDiv"><img src="images/piperLogo.png"></div>
+ <div class="infoDiv ">
+   <a style="text-decoration: none;" href=''>
+     <div class="svg-wrapper">
+       <svg height="40" width="150" style="text-decoration: none;" xmlns="http://www.w3.org/2000/svg">
+         <rect class="shape" height="40" width="150" />
+       </svg>
+       <div class="text">INFO
+       </div>
+     </div>
+   </a>
+ </div>
+ <div id='tooltip' class="" style="display:none;">
+   <p>
+     <u>Welcome to Piper Chat</u><br> Piper Chat is an anonymous chat. Choose a Nick Name and Click on the Chat button to open
+     a chat room.
 
-    </p>
-  </div>
+  </p>
+ </div>
 
-  <!-- START testing new form-->
-  <div class="i-am-centered">
-    <div class="row" id="user-login-form">
-      <div class="col-md-8">
-        <section class="webdesigntuts-workshop">
-          <form action="" method="" autocomplete="off" id="form1">
-            <input id="nicknameInput" type="text" placeholder="Insert A User Name Please ">
-            <button type="submit" form="form1" value="Submit">CHAT</button>
-          </form>
-        </section>
+<!-- START testing new form-->
+ <div class="i-am-centered">
+   <div class="row" id="user-login-form">
+     <div class="col-md-8">
+       <section class="webdesigntuts-workshop">
+         <form action="" method="" autocomplete="off" id="form1">
+           <input id="nicknameInput" type="text" placeholder="Insert A User Name Please ">
+           <button type="submit" form="form1" value="Submit">CHAT</button>
+         </form>
+       </section>
 
-      </div>
     </div>
-  </div>
-  <!--END Testing a new From-->
+   </div>
+ </div>
+ <!--END Testing a new From-->
 
-  </div>
+</div>
 
-  <div class="container chatMovement hide">
-    <div class='titleHolder'> <img src='/images/secureChannel.png'> </div>
+<div class="container chatMovement hide">
+   <div class='titleHolder'> <img class="img-responsive" src='/images/secureChannel.png'> </div>
 
-    <div id="chat-link">
-      <button id="copy-link">Copy link</button>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 col-sm-3">
-          <h3>online users:</h3>
-          <ul class="list-group" id="users">
+  <div id="chat-link">
+     <button id="copy-link">Copy link</button>
+   </div>
+   <div class="container">
+     <div class="row">
+       <div class="col-md-3 col-sm-3">
+         <h3>ONLINE USERS</h3>
+         <ul class="list-group" id="users">
+         
+        </ul>
+         <!--ani-->
+           
+           <!---->
+       </div>
+       <div class="col-md-9 col-sm-9">
+
+        <div class="chat" id="chat">
+           <ul id="messages">
 
           </ul>
-        </div>
-        <div class="col-md-9 col-sm-9">
-
-          <div class="chat" id="chat">
-            <ul id="messages">
-
-            </ul>
-          </div>
-          <section class="webdesigntuts-workshop">
-            <div class="formText">
-              <form action="" id="messageForm">
-                <input id="m" autocomplete="off" />
-                <!--<button id="sendMB">Pusk</button>-->
-                <button id="sendMB" class="buttonChat">PUSK</button>
-              </form>
-            </div>
-          </section>
-        </div>
-        <!--<section class="webdesigntuts-workshop">
-          <form action="" method="" autocomplete="off" id="form1">
-            <input id="m" autocomplete="off" type="text" >
-            <button  id="sendMB" class="buttonChat">CHAT</button>
-          </form>
-        </section>-->
+         </div>
+         <section class="webdesigntuts-workshop">
+           <div class="formText">
+             <form action="" id="messageForm">
+               <input id="m" autocomplete="off" />
+               <!--<button id="sendMB">Pusk</button>-->
+               <button id="sendMB" class="buttonChat">PUSK</button>
+             </form>
+           </div>
+         </section>
+       </div>
+       <!--<section class="webdesigntuts-workshop">
+         <form action="" method="" autocomplete="off" id="form1">
+           <input id="m" autocomplete="off" type="text" >
+           <button  id="sendMB" class="buttonChat">CHAT</button>
+         </form>
+       </section>-->
 
 
-      </div>
     </div>
-  </div>
+   </div>
+ </div>
 
-
-
-
-
-
-  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="frontchatpage.js"></script>
-  <script src="socket.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+ <script src="/socket.io/socket.io.js"></script>
+ <script src="frontchatpage.js"></script>
+ <script src="socket.js"></script>
 </body>
 
 </html>
