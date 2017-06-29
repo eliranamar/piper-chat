@@ -36,19 +36,19 @@
   </div>
   <!--login nick name-->
   <!--<div class="i-am-centered">
-    <div class="row" id="user-login-form">
-      <div class="col-md-8">
-        <form action="" id="userForm">
-          <div class="form-group">
-            <input type="text" class="" id="nicknameInput" placeholder="Enter Nickname" autocomplete="off">
-            <br>
-            <input type="submit" class="btn btn-primary" value="Chat">
-          </div>
-        </form>
-      </div>
-    </div>-->
+   <div class="row" id="user-login-form">
+     <div class="col-md-8">
+       <form action="" id="userForm">
+         <div class="form-group">
+           <input type="text" class="" id="nicknameInput" placeholder="Enter Nickname" autocomplete="off">
+           <br>
+           <input type="submit" class="btn btn-primary" value="Chat">
+         </div>
+       </form>
+     </div>
+   </div>-->
 
-<!-- START testing new form-->
+  <!-- START testing new form-->
   <div class="i-am-centered">
     <div class="row" id="user-login-form">
       <div class="col-md-8">
@@ -59,28 +59,30 @@
           </form>
         </section>
 
-     </div>
+      </div>
     </div>
   </div>
   <!--END Testing a new From-->
+
+  </div>
 
   <div class="container hide">
     <div class="page-header">
       <h1>Piper Chat</h1>
     </div>
-    <div id="chat-link">
-      <button id="copy-link">Copy link</button>
-    </div>
+
 
     <div class="container">
       <div class="row">
-        <div class="col-md-3 col-sm-3">
+        <!--eliran adding class col-lg-->
+        <div class="col-lg-3 col-md-3 col-sm-3">
           <h3>online users:</h3>
           <ul class="list-group" id="users">
 
           </ul>
         </div>
-        <div class="col-md-9 col-sm-9">
+        <!--eliran adding class col-lg-->
+        <div class="col-lg-9 col-md-9 col-sm-9">
 
           <div class="chat" id="chat">
             <ul id="messages">
@@ -93,11 +95,16 @@
               <input id="m" autocomplete="off" /><button id="sendMB">Pusk</button>
             </form>
           </div>
-
         </div>
+
       </div>
     </div>
   </div>
+
+
+
+
+
 
   <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
   <script src="/socket.io/socket.io.js"></script>

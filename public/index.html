@@ -11,9 +11,11 @@
   <link href="https://www.dropbox.com/s/udfqeb2pkbcv3be/styles.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet">
   <link href="css/front.css" rel="stylesheet">
+
 </head>
 
 <body>
+  <audio src="sound/mrrobot.mp3" autoplay></audio>
   <div class="logoDiv"><img src="images/piperLogo.png"></div>
   <div class="infoDiv ">
     <a style="text-decoration: none;" href=''>
@@ -21,7 +23,8 @@
         <svg height="40" width="150" style="text-decoration: none;" xmlns="http://www.w3.org/2000/svg">
           <rect class="shape" height="40" width="150" />
         </svg>
-        <div class="text">INFO
+        <div id="infoBox" class="text">INFO
+
         </div>
       </div>
     </a>
@@ -50,6 +53,11 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="homepage.js"></script>
   <script src="front.js"></script>
+  <audio id="infoSound" preload="auto">
+    <source src="sound/communication-channel.mp3" type="audio/mpeg"></source>
+  </audio>
+
+
 </body>
 
 </html>

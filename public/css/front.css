@@ -261,3 +261,21 @@ html, body {
 		box-shadow: 0 0 50px rgba(0,169,223,.6), inset 0 0 10px rgba(0,169,223,.4), 0 0px 0 #000;
     }
 }
+
+/*chat*/
+li.messageLi {
+    background-color: #fff !important;
+    width: 94%;
+    border-radius: 20px;
+	margin-top: 20px;
+
+}
+span.nameChat {
+    color: #462D56;
+    float: left;
+    padding-left: 20px;
+}
+
+p.textChat {
+   color: black;
+}

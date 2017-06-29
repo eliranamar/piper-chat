@@ -3,6 +3,9 @@ console.log('homepage.js connected');
 var socket = io();
 var $nicknameInput = $('#nicknameInput');
 var $userForm = $('#userForm');
+// var $infoSound = $('#infoSound');
+var $infoBox = $('#infoBox');
+
 
 
 //making random room ids
@@ -23,4 +26,12 @@ $('div.msg').click(function (e) {
   });
   $nicknameInput.val('');
   window.location = "http://localhost:8000/chat/"+roomId;
+});
+
+$infoBox.mouseenter(function () {
+  $('#infoSound').get(0).play();
+});
+
+$('selector').on('click', function () {
+  
 });
