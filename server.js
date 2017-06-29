@@ -21,11 +21,11 @@ server.listen(port, '0.0.0.0', function () {
 });
 
 //get req for chat rooms route
-app.get('/chat/:id', function (req, res) {
-  room = req.params.id;
-  console.log(room);
-  res.redirect('http://localhost:8000/chat.html?' + room);
-});
+// app.get('/chat/:id', function (req, res) {
+//   room = req.params.id;
+//   console.log(room);
+//   res.redirect('http://localhost:8000/chat.html?' + room);
+// });
 // when a user connects
 io.on('connection', function (socket) {
   function updateUserList() {
@@ -33,6 +33,7 @@ io.on('connection', function (socket) {
     socket.to(socket.room).emit('usernames', Object.keys(users));
     // socket.emit('usernames', Object.keys(users));
   }
+  socket.on('get user list',updateUserList);
 
   // when user create and login to chat room
   socket.on('create chat room', function (roomId) {
@@ -42,12 +43,12 @@ io.on('connection', function (socket) {
   // check if new user exists
   socket.on('new user', function (data, callback) {
     console.log(data);
-    if (data in users) {
+    if (data.name in users) {
       callback(false);
     } else {
       callback(true);
-      socket.room = room;
-      socket.username = data;
+      socket.room = data.room;
+      socket.username = data.name;
       // users.push(socket.username);
       users[socket.username] = socket;
       // console.log(users);
@@ -63,7 +64,6 @@ io.on('connection', function (socket) {
     socket.emit('update chat', 'FROM SERVER', 'you have connected to room ' + socket.room);
     // send to chat room a new user connected
     socket.broadcast.to(socket.room).emit('update chat', 'FROM SERVER', socket.username + ' has connected to this room');
-    updateUserList();
   })
 
   //when client send a message

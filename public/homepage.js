@@ -25,7 +25,7 @@ $divMsg.click(function (e) {
 
   });
   $nicknameInput.val('');
-  window.location = "http://localhost:8000/chat/" + roomId;
+  window.location = "http://localhost:8000/chat.html?" + roomId;
 });
 
 // ELIRAN ADDED SOUNDS
