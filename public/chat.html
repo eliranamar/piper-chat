@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body style="background:#000">
   <div class="logoDiv"><img src="images/piperLogo.png"></div>
   <div class="infoDiv ">
     <a style="text-decoration: none;" href=''>
@@ -34,21 +34,8 @@
 
     </p>
   </div>
-  <!--login nick name-->
-  <!--<div class="i-am-centered">
-    <div class="row" id="user-login-form">
-      <div class="col-md-8">
-        <form action="" id="userForm">
-          <div class="form-group">
-            <input type="text" class="" id="nicknameInput" placeholder="Enter Nickname" autocomplete="off">
-            <br>
-            <input type="submit" class="btn btn-primary" value="Chat">
-          </div>
-        </form>
-      </div>
-    </div>-->
 
-<!-- START testing new form-->
+  <!-- START testing new form-->
   <div class="i-am-centered">
     <div class="row" id="user-login-form">
       <div class="col-md-8">
@@ -59,19 +46,19 @@
           </form>
         </section>
 
-     </div>
+      </div>
     </div>
   </div>
   <!--END Testing a new From-->
 
   </div>
 
-  <div class="container hide">
-    <div class="page-header">
-      <h1>Piper Chat</h1>
+  <div class="container chatMovement hide">
+    <div class='titleHolder'> <img src='/images/secureChannel.png'> </div>
+
+    <div id="chat-link">
+      <button id="copy-link">Copy link</button>
     </div>
-
-
     <div class="container">
       <div class="row">
         <div class="col-md-3 col-sm-3">
@@ -87,17 +74,29 @@
 
             </ul>
           </div>
-
-          <div class="formText">
-            <form action="" id="messageForm">
-              <input id="m" autocomplete="off" /><button id="sendMB">Pusk</button>
-            </form>
-          </div>
+          <section class="webdesigntuts-workshop">
+            <div class="formText">
+              <form action="" id="messageForm">
+                <input id="m" autocomplete="off" />
+                <!--<button id="sendMB">Pusk</button>-->
+                <button id="sendMB" class="buttonChat">PUSK</button>
+              </form>
+            </div>
+          </section>
         </div>
+        <!--<section class="webdesigntuts-workshop">
+          <form action="" method="" autocomplete="off" id="form1">
+            <input id="m" autocomplete="off" type="text" >
+            <button  id="sendMB" class="buttonChat">CHAT</button>
+          </form>
+        </section>-->
+
 
       </div>
     </div>
   </div>
+
+
 
 
 

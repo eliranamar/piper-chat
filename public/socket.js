@@ -15,6 +15,7 @@ function copyToClipboard(element) {
   var $temp = $("<input>");
   $("body").append($temp);
   $temp.val($(element).text()).select();
+  console.log($temp.val());
   document.execCommand("copy");
   $temp.remove();
 }
@@ -36,8 +37,9 @@ socket.on('update chat', function (username, data) {
 
 // when server sends a message to client
 socket.on('chat message', function (data) {
-  // console.log(data.user);
-  $('#messages').append($('<li>').text('- ' + data.user + ': ' + data.text));
+  var text = "<li class='messageLi'><span class='nameChat' >" + data.user + '</span>' + "<p class='textChat'>" + data.text + "</p></li><div class='clearfix'></div>";
+  // console.log(text);
+  $('#messages').append(text);
   window.scrollTo(0, document.body.scrollHeigh);
 });
 
@@ -70,6 +72,8 @@ $userForm.submit(function (e) {
 
   });
   $nicknameInput.val('');
+  $('.infoDiv ').addClass('hide'); // Adding hide class to info to make it desapear
+  $(".logoDiv").after("<div class='soundImage'><img src='/images/radar.gif'></div>");
 });
 
 socket.on('update users', function (data) {
@@ -95,5 +99,8 @@ function makeid() {
 
   return text + Math.floor(Math.random() * 19568);
 }
-
+$('#chat-link').append('<span id="link-text">http://localhost:8000/chat.html?' + room + '</span>');
+$('#copy-link').on('click', function () {
+  copyToClipboard('#link-text')
+});
 $('#nicknameInput').focus();

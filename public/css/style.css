@@ -2,60 +2,86 @@ body {
     background: black;
     color: #fff;
 }
+
 a {
-    color: #FFFFFF ;
+    color: #FFFFFF;
     text-decoration: none;
 }
-.hide{
-  display: none;
+
+.hide {
+    display: none;
 }
-.h1, h1 {
+
+.h1,
+h1 {
     font-size: 36px;
     color: #fff;
-    text-shadow: 2px 2px #00efff ;
+    text-shadow: 2px 2px #00efff;
 }
+
 input#m {
-    border: 1px solid #9dd4fb ;
-    box-shadow: 2px 2px #399dbb ;
-    width: 90%;
+    border: 1px solid #9dd4fb;
+    box-shadow: 2px 2px #399dbb;
+    width: 89%;
     height: 50px;
     background: transparent;
     color: #fff;
     font-size: 16px;
 }
+
 .col-md-9.col-sm-9 {
     height: 764px;
 }
+
 div#chat {
-    height: 92%;
-    border: 1px solid #9dd4fb ;
-    box-shadow: 2px 2px #399dbb ;
+    height: 60%;
+    border: 4px solid #9dd4fb;
+    /*box-shadow: 2px 2px #399dbb ;*/
+    overflow: overlay;
+    background: -webkit-linear-gradient(rgba(25, 48, 74, 0.51), rgba(0, 169, 223, 0.51));
+    background: -o-linear-gradient(rgba(25, 48, 74, 0.51), rgba(0, 169, 223, 0.51));
+    background: -moz-linear-gradient(rgba(25, 48, 74, 0.51), rgba(0, 169, 223, 0.51));
+    background: linear-gradient(rgba(25, 48, 74, 0.1), rgba(0, 169, 223, 0.2));
+    word-wrap: break-word;
 }
+
 li {
     list-style: none;
     color: #fff;
     font-size: 20px;
 }
+
 button#sendMB {
-    width: 84px;
+    width: 88px;
     height: 50px;
-    background-color: #39a6bb ;
+    background-color: #39a6bb;
+    margin-top: 0.1px;
+    font-size: 20px;
 }
+
+
 /*login on chat room*/
+
 .i-am-centered {
     width: 30%;
     margin-left: 40%;
     margin-top: 20%;
 }
 
+
 /*logo*/
+
 .logoDiv {
     width: 225px;
     height: 75px;
     margin-left: 40px;
     margin-top: 25px;
 }
+
+
 /*testing the button*/
+
+
 /*#userForm{
-    display:none;
+   display:none;
 }*/

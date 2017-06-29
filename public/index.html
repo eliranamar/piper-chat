@@ -11,6 +11,7 @@
   <link href="https://www.dropbox.com/s/udfqeb2pkbcv3be/styles.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet">
   <link href="css/front.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -21,7 +22,8 @@
         <svg height="40" width="150" style="text-decoration: none;" xmlns="http://www.w3.org/2000/svg">
           <rect class="shape" height="40" width="150" />
         </svg>
-        <div class="text">INFO
+        <div id="infoBox" class="text">INFO
+
         </div>
       </div>
     </a>
@@ -50,6 +52,20 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="homepage.js"></script>
   <script src="front.js"></script>
+
+  <!--ELIRAN ADDED SOUND FILES-->
+  <audio id="infoSound" preload="auto">
+    <source src="sound/communication-channel.mp3" type="audio/mpeg"></source>
+  </audio>
+  <audio id="createSound" preload="auto">
+    <source src="sound/Swish-sound-effect.mp3" type="audio/mpeg"></source>
+  </audio>
+  <audio id="creatClickSound" preload="auto">
+    <source src="sound/Blooper-sound-effect.mp3" type="audio/mpeg"></source>
+  </audio>
+  <audio src="sound/Impact-sound-effect.mp3" autoplay></audio>
+
+
 </body>
 
 </html>

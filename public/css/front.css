@@ -1,124 +1,151 @@
 /*animation*/
+
 #c {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 50%;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	height: 50%;
 }
+
+
 /*button*/
-html, body { height: 100%; }
+
+html,
 body {
-    margin: 0;
-    background: radial-gradient(#666, #222);
+	height: 100%;
 }
+
+body {
+	margin: 0;
+	background: radial-gradient(#666, #222);
+}
+
 .button {
-    position: absolute;
-    left:50%; top:50%;
-    width:140px; height:140px;
-    margin:-70px 0 0 -70px;
-    cursor: pointer;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 140px;
+	height: 140px;
+	margin: -70px 0 0 -70px;
+	cursor: pointer;
 }
+
 .compass {
-    position: absolute;
-    width:100%; height:100%;
-    background: #444;
-    border-radius: 0 50% 50% 50%;
-    border: 10px solid white;
-    box-shadow: 0 0 8px rgba(0,0,0,.2);
-    border-right-color: #00A9DF ;
-    border-bottom-color: #00A9DF ;
-    transition: border-radius .2s;
-    box-sizing: border-box;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #444;
+	border-radius: 0 50% 50% 50%;
+	border: 10px solid white;
+	box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+	border-right-color: #00A9DF;
+	border-bottom-color: #00A9DF;
+	transition: border-radius .2s;
+	box-sizing: border-box;
 }
+
 .button:hover .compass {
-    border-radius: 50%;
+	border-radius: 50%;
 }
+
 .msg {
-    position: absolute;
-    width:100%; height:100%;
-    line-height: 140px;
-    text-align: center;
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 300;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	line-height: 140px;
+	text-align: center;
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
 }
+
+
 /*Info Hover*/
-html, body {
-  background: #333;
-  height: 100%;
-  overflow: hidden;
-  text-align: center;
+
+html,
+body {
+	background: #333;
+	height: 100%;
+	overflow: hidden;
+	text-align: center;
 }
 
 .svg-wrapper {
-      height: 40px;
-    margin: 0 auto;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-      border-bottom: 0.5px solid #00A9DF ;
-    width: 150px;
+	height: 40px;
+	margin: 0 auto;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	border-bottom: 0.5px solid #00A9DF;
+	width: 150px;
 }
 
 .shape {
-  fill: transparent;
-  stroke-dasharray: 140 540;
-  stroke-dashoffset: -474;
-  stroke-width: 8px;
-  stroke: #19f6e8 ;
+	fill: transparent;
+	stroke-dasharray: 140 540;
+	stroke-dashoffset: -474;
+	stroke-width: 8px;
+	stroke: #19f6e8;
 }
 
 .text {
-    color: #fff;
-    font-family: 'Helvetica';
-    letter-spacing: 8px;
-    line-height: 46px;
-    position: relative;
-    top: -48px;
-    font-size: 20px;
+	color: #fff;
+	font-family: 'Helvetica';
+	letter-spacing: 8px;
+	line-height: 46px;
+	position: relative;
+	top: -48px;
+	font-size: 20px;
 }
 
 @keyframes draw {
-  0% {
-    stroke-dasharray: 140 540;
-    stroke-dashoffset: -474;
-    stroke-width: 8px;
-  }
-  100% {
-    stroke-dasharray: 760;
-    stroke-dashoffset: 0;
-    stroke-width: 2px;
-  }
+	0% {
+		stroke-dasharray: 140 540;
+		stroke-dashoffset: -474;
+		stroke-width: 8px;
+	}
+	100% {
+		stroke-dasharray: 760;
+		stroke-dashoffset: 0;
+		stroke-width: 2px;
+	}
 }
 
 .svg-wrapper:hover .shape {
-  -webkit-animation: 0.5s draw linear forwards;
-  animation: 0.5s draw linear forwards;
+	-webkit-animation: 0.5s draw linear forwards;
+	animation: 0.5s draw linear forwards;
 }
+
+
 /*the div*/
+
 .infoDiv {
-    position: relative;
-    height: 14px;
-    top: -35px;
-    width: 320px;
-    float: right;
+	position: relative;
+	height: 14px;
+	top: -35px;
+	width: 320px;
+	float: right;
 }
+
+
 /*tooltip*/
+
 #tooltip {
-    position: relative;
-        top: -55px;
-    right: -73px;
-    width: 285px;
-    height: 100px;
-    float: right;
-    border: 1px solid;
+	position: relative;
+	top: -55px;
+	right: -73px;
+	width: 285px;
+	height: 100px;
+	float: right;
+	border: 1px solid;
 }
+
 
 /* chat page the form*/
-@import url(https://fonts.googleapis.com/css?family=Cabin:400);
 
+@import url(https://fonts.googleapis.com/css?family=Cabin:400);
 .webdesigntuts-workshop {
 	/*background: #151515;*/
 	height: 100%;
@@ -130,7 +157,7 @@ html, body {
 .webdesigntuts-workshop:before,
 .webdesigntuts-workshop:after {
 	content: '';
-	display: block;	
+	display: block;
 	/*height: 1px;*/
 	left: 50%;
 	margin: 0 0 0 -400px;
@@ -146,7 +173,7 @@ html, body {
 
 .webdesigntuts-workshop:after {
 	background: #000;
-	background: linear-gradient(left, #151515, #000, #151515);	
+	background: linear-gradient(left, #151515, #000, #151515);
 	top: 191px;
 }
 
@@ -165,8 +192,8 @@ html, body {
 }
 
 .webdesigntuts-workshop input {
-	background: #222;	
-	background: linear-gradient(#333, #222);	
+	background: #222;
+	background: linear-gradient(#333, #222);
 	border: 1px solid #444;
 	border-radius: 5px 0 0 5px;
 	box-shadow: 0 2px 0 #000;
@@ -188,11 +215,11 @@ html, body {
 }
 
 .webdesigntuts-workshop input::-webkit-input-placeholder {
-   color: #888;
+	color: #888;
 }
 
 .webdesigntuts-workshop input:-moz-placeholder {
-   color: #888;
+	color: #888;
 }
 
 .webdesigntuts-workshop input:focus {
@@ -205,7 +232,7 @@ html, body {
 	outline: none;
 }
 
-.webdesigntuts-workshop input:focus::-webkit-input-placeholder { 
+.webdesigntuts-workshop input:focus::-webkit-input-placeholder {
 	color: #efe;
 }
 
@@ -234,7 +261,7 @@ html, body {
 	position: relative;
 	text-shadow: 0 -1px 0 #000;
 	width: 80px;
-}	
+}
 
 .webdesigntuts-workshop button:hover,
 .webdesigntuts-workshop button:focus {
@@ -252,12 +279,94 @@ html, body {
 }
 
 @keyframes glow {
-    0% {
+	0% {
 		border-color: #00A9DF;
-		box-shadow: 0 0 5px rgba(0,169,223,.2), inset 0 0 5px rgba(0,169,223,.1), 0 0px 0 #000;
-    }	
-    100% {
+		box-shadow: 0 0 5px rgba(0, 169, 223, .2), inset 0 0 5px rgba(0, 169, 223, .1), 0 0px 0 #000;
+	}
+	100% {
 		border-color: #00A9DF;
-		box-shadow: 0 0 50px rgba(0,169,223,.6), inset 0 0 10px rgba(0,169,223,.4), 0 0px 0 #000;
-    }
+		box-shadow: 0 0 50px rgba(0, 169, 223, .6), inset 0 0 10px rgba(0, 169, 223, .4), 0 0px 0 #000;
+	}
+}
+
+
+/*chat*/
+
+li.messageLi {
+	background-color: #fff !important;
+	width: 94%;
+	border-radius: 20px;
+	margin-top: 2px;
+}
+
+span.nameChat {
+	color: red;
+	float: left;
+	padding-left: 20px;
+	padding-right: 19px;
+}
+
+p.textChat {
+	text-align: left;
+	color: black;
+}
+
+
+/*gif */
+
+.soundImage {
+	float: right;
+	position: relative;
+	top: -99px;
+	left: -5px;
+	border: 5px solid #9dd4fb;
+}
+
+.chatMovement {
+	position: relative;
+	right: 227px;
+	top: -203px;
+}
+
+.titleHolder {
+	width: 800px;
+	margin-left: 323px;
+	position: relative;
+	top: -79px;
+}
+
+
+/*Chat button*/
+
+.buttonChat {
+	border: 1px solid teal;
+	/*border-radius: 10px;*/
+	margin: auto;
+	vertical-align: center;
+	width: 200px;
+	/*margin-top: 100px;*/
+	transition: all .2s ease;
+}
+
+.buttonChat:hover {
+	border-color: white;
+	box-shadow: 0px 0px 15px 5px #00A8DE;
+}
+
+.buttonChat:hover h1 {
+	color: white;
+}
+
+h1 {
+	color: teal;
+	font-size: 30px;
+	/*margin-left: 25%;
+  margin-right: 25%;*/
+	transition: all .2s ease;
+}
+
+form#messageForm {
+	width: 97%;
+	margin: 2px auto 0;
+	margin-right: 24px;
 }
