@@ -12,34 +12,35 @@ console.log('room: ' + room);
 
 // copy chat room link to clipboard
 function copyToClipboard(element) {
- var $temp = $("<input>");
- $("body").append($temp);
- $temp.val($(element).text()).select();
- document.execCommand("copy");
- $temp.remove();
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  console.log($temp.val());
+  document.execCommand("copy");
+  $temp.remove();
 }
 
 
 // when client sends a message to server
 $('#messageForm').submit(function () {
- //emit to server
- socket.emit('chat message', $('#m').val());
- $('#m').val('');
- // console.log('msg submitted');
- return false;
+  //emit to server
+  socket.emit('chat message', $('#m').val());
+  $('#m').val('');
+  // console.log('msg submitted');
+  return false;
 });
 
 // when the server send a message:
 socket.on('update chat', function (username, data) {
- $('#messages').append('<b>' + username + ':</b> ' + data + '<br>');
+  $('#messages').append('<b>' + username + ':</b> ' + data + '<br>');
 });
 
 // when server sends a message to client
 socket.on('chat message', function (data) {
- var text ="<li class='messageLi'><span class='nameChat' >"+data.user+'</span>'+"<p class='textChat'>"+data.text+"</p></li><div class='clearfix'></div>";
- // console.log(text);
- $('#messages').append(text);
- window.scrollTo(0, document.body.scrollHeigh);
+  var text = "<li class='messageLi'><span class='nameChat' >" + data.user + '</span>' + "<p class='textChat'>" + data.text + "</p></li><div class='clearfix'></div>";
+  // console.log(text);
+  $('#messages').append(text);
+  window.scrollTo(0, document.body.scrollHeigh);
 });
 
 // grab user login elements
@@ -48,53 +49,58 @@ var $userForm = $('#form1');
 var $nicknameInput = $('#nicknameInput');
 //on user login 
 $userForm.submit(function (e) {
- e.preventDefault();
- if (!room) {
-   $('body').html('');
-   $('body').append('<img width="100%" id="magicWord" src="https://media.giphy.com/media/uOAXDA7ZeJJzW/giphy.gif"></img>');
-   return false;
- }
- console.log('submit nickname');
- console.log($nicknameInput.val());
- if (!$nicknameInput.val()) {
-   alert('please enter nickname');
-   return false;
- }
- socket.emit('new user', $nicknameInput.val(), function (data) {
-   if (data) {
-     socket.emit('join room', room);
-     $(".i-am-centered").addClass("hide");
-     $(".container").removeClass("hide");
-   } else {
-     alert('nick name taken, try something else');
-   }
+  e.preventDefault();
+  if (!room) {
+    $('body').html('');
+    $('body').append('<img width="100%" id="magicWord" src="https://media.giphy.com/media/uOAXDA7ZeJJzW/giphy.gif"></img>');
+    return false;
+  }
+  console.log('submit nickname');
+  console.log($nicknameInput.val());
+  if (!$nicknameInput.val()) {
+    alert('please enter nickname');
+    return false;
+  }
+  socket.emit('new user', $nicknameInput.val(), function (data) {
+    if (data) {
+      socket.emit('join room', room);
+      $(".i-am-centered").addClass("hide");
+      $(".container").removeClass("hide");
+    } else {
+      alert('nick name taken, try something else');
+    }
 
- });
- $nicknameInput.val('');
+  });
+  $nicknameInput.val('');
+  $('.infoDiv ').addClass('hide'); // Adding hide class to info to make it desapear
+  $(".logoDiv").after("<div class='soundImage'><img src='/images/radar.gif'></div>");
 });
 
 socket.on('update users', function (data) {
- console.log('updating users...');
+  console.log('updating users...');
 });
 
 socket.on('usernames', function (data) {
- // console.log('test');
- console.log(data);
- var html = '';
- for (i = 0; i < data.length; i++) {
-   html += data[i] + '<br/>';
- }
- $usersLogin.html(html);
+  // console.log('test');
+  console.log(data);
+  var html = '';
+  for (i = 0; i < data.length; i++) {
+    html += data[i] + '<br/>';
+  }
+  $usersLogin.html(html);
 });
 
 function makeid() {
- var text = "";
- var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
- for (var i = 0; i < 5; i++)
-   text += possible.charAt(Math.floor(Math.random() * possible.length));
+  for (var i = 0; i < 5; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
 
- return text + Math.floor(Math.random() * 19568);
+  return text + Math.floor(Math.random() * 19568);
 }
-
+$('#chat-link').append('<span id="link-text">http://localhost:8000/chat.html?' + room + '</span>');
+$('#copy-link').on('click', function () {
+  copyToClipboard('#link-text')
+});
 $('#nicknameInput').focus();

@@ -5,7 +5,7 @@ var $nicknameInput = $('#nicknameInput');
 var $userForm = $('#userForm');
 // var $infoSound = $('#infoSound');
 var $infoBox = $('#infoBox');
-
+var $divMsg = $('div.msg');
 
 
 //making random room ids
@@ -17,7 +17,7 @@ function makeid() {
   return text + Math.floor(Math.random() * 99999);
 }
 
-$('div.msg').click(function (e) {
+$divMsg.click(function (e) {
   e.preventDefault();
   var roomId = makeid();
   console.log('creating chat room');
@@ -25,13 +25,18 @@ $('div.msg').click(function (e) {
 
   });
   $nicknameInput.val('');
-  window.location = "http://localhost:8000/chat/"+roomId;
+  window.location = "http://localhost:8000/chat/" + roomId;
 });
 
+// ELIRAN ADDED SOUNDS
 $infoBox.mouseenter(function () {
   $('#infoSound').get(0).play();
 });
 
-$('selector').on('click', function () {
-  
+$divMsg.mouseover(function () {
+  $('#createSound').get(0).play();
+});
+
+$divMsg.click(function(){
+  $('#creatClickSound').get(0).play();
 });
