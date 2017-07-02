@@ -105,7 +105,7 @@ function makeid() {
 
   return text + Math.floor(Math.random() * 19568);
 }
-$('#chat-link').append('<span id="link-text">http://localhost:8000/chat.html?' + room + '</span>');
+$('#chat-link').append('<span id="link-text">https://piper-chat.herokuapp.com/chat.html?' + room + '</span>');
 $('#copy-link').on('click', function () {
   copyToClipboard('#link-text')
 });

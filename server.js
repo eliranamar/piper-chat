@@ -16,8 +16,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 
-server.listen(port, '0.0.0.0', function () {
-  console.log('listening on port 8000');
+server.listen(port, function () {
+  console.log('listening on port ' + port);
 });
 
 //get req for chat rooms route

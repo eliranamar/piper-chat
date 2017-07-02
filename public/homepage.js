@@ -25,7 +25,7 @@ $divMsg.click(function (e) {
 
   });
   $nicknameInput.val('');
-  window.location = "http://localhost:8000/chat.html?" + roomId;
+  window.location = "https://piper-chat.herokuapp.com/chat.html?" + roomId;
 });
 
 // ELIRAN ADDED SOUNDS
